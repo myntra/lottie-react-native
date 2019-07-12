@@ -19,8 +19,6 @@ android {
     qa {}
     fox {}
     release {}
-    sourceSets {}
-    splits {}
   }
 
   lintOptions {
