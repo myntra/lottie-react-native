@@ -33,6 +33,6 @@ android {
 }
 
 dependencies {
-  implementation project(':react-native')
+  implementation "com.facebook.react:react-native:${safeExtGet('reactnativeVersion', '+')}"
   implementation 'com.airbnb.android:lottie:2.5.6'
 }
