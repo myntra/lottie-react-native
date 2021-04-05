@@ -1,5 +1,5 @@
 declare module "lottie-react-native" {
-  import { Animated, StyleProp, ViewStyle } from "react-native";
+  import { Animated, StyleProp, ViewStyle, LayoutChangeEvent } from "react-native";
   /**
    * Serialized animation as generated from After Effects
    */
@@ -14,6 +14,11 @@ declare module "lottie-react-native" {
     ddd: number;
     assets: any[];
     layers: any[];
+  }
+
+  type ColorFilter = {
+    keypath: string;
+    color: string;
   }
 
   /**
@@ -34,14 +39,14 @@ declare module "lottie-react-native" {
      * animation will correspondingly update to the frame at that progress value. This
      * prop is not required if you are using the imperative API.
      */
-    progress?: number | Animated.Value;
+    progress?: number | Animated.Value | Animated.AnimatedInterpolation;
 
     /**
      * The speed the animation will progress. This only affects the imperative API. The
      * default value is 1.
      */
     speed?: number;
-    
+
     /**
      * The duration of the animation in ms. Takes precedence over speed when set.
      * This only works when source is an actual JS object of an animation.
@@ -77,11 +82,23 @@ declare module "lottie-react-native" {
     hardwareAccelerationAndroid?: boolean;
 
     /**
-     * Determines how to resize the animated view when the frame doesn't match the raw image 
+     * Determines how to resize the animated view when the frame doesn't match the raw image
      * dimensions.
      * Refer to https://facebook.github.io/react-native/docs/image.html#resizemode
      */
     resizeMode?: "cover" | "contain" | "center";
+
+    /**
+     * Determines how Lottie should render
+     * Refer to LottieAnimationView#setRenderMode(RenderMode) for more information.
+     */
+    renderMode?: "AUTOMATIC" | "HARDWARE" | "SOFTWARE";
+
+    /**
+     * [Android]. A boolean flag indicating whether or not the animation should caching. Defaults to true.
+     * Refer to LottieAnimationView#setCacheComposition(boolean) for more information.
+     */
+    cacheComposition?: boolean;
 
     /**
      * [Android]. Allows to specify kind of cache used for animation. Default value weak.
@@ -99,13 +116,13 @@ declare module "lottie-react-native" {
 
     /**
      * A boolean flag indicating whether or not the animation should size itself automatically
-     * according to the width in the animation's JSON. This only works when source is an actual 
+     * according to the width in the animation's JSON. This only works when source is an actual
      * JS object of an animation.
      */
     autoSize?: boolean;
 
     /**
-     * A boolean flag to enable merge patching in android.  
+     * A boolean flag to enable merge patching in android.
      */
     enableMergePathsAndroidForKitKatAndAbove?: boolean;
 
@@ -114,19 +131,36 @@ declare module "lottie-react-native" {
      * callback will be called only when `loop` is set to false.
      */
     onAnimationFinish ?: (isCancelled: boolean) => void;
+
+    /**
+     * A callback function which will be called when the view has been laid out.
+     */
+    onLayout?: (event: LayoutChangeEvent) => void;
+
+    /**
+     * An array of layers you want to override its color filter.
+     */
+    colorFilters ?: Array<ColorFilter>;
+
+    /**
+     * A string to identify the component during testing
+     */
+    testID?: string;
   }
 
   /**
    * View hosting the lottie animation. In order to successfully import this definition in
    * your typescript file, you need to import the view as:
-   * 
+   *
    * `import LottieView = require("lottie-react-native");`
-   * 
+   *
    * Otherwise the compiler will give you issues and won't work.
    */
   class AnimatedLottieView extends React.Component<AnimatedLottieViewProps, {}> {
     play(startFrame?: number, endFrame?: number): void;
     reset(): void;
+    pause(): void;
+    resume(): void;
   }
 
   export = AnimatedLottieView;

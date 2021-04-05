@@ -1,3 +1,79 @@
+## 3.4.1
+- Updated the development app to React Native 0.62.2
+- Updated `lottie-ios` dependency to 3.1.8
+- Updated `lottie-android` dependency to 3.4.0
+
+## 3.4.0 (May 20, 2020)
+
+- Add auto embed fastlane
+- Updated Android Building environment
+- Add testID prop to AnimatedLottieView typescript definition
+- Added Pause & Resume commands. Also added `onLayout` prop.
+- Fix iOS speed not changing dynamically
+- Improved documentation
+
+## 3.3.2 (Nov 15, 2019)
+
+- Removed support for `Reanimated`
+
+## 3.3.1 (Nov 12, 2019)
+
+- Support for `Reanimated`
+- Added `colorFilters` prop for setting individually layers color
+- Documentation update
+
+## 3.2.1 (Sep 30, 2019)
+
+- Fix for strange characters in some Java files
+
+## 3.2.0 (Sep 30, 2019)
+
+- Updated `lottie-ios` dependency to 3.1.3
+- Updated `lottie-android` dependency to 3.0.7
+- Make NPM package leaner
+- Fix playing reverse on Android
+
+## 3.1.1 (Sep 16, 2019)
+
+- Fix loading assets from app bundle on iOS
+- Remove unused deprecated `publishNonDefault` Gradle option
+- Support passing extensionless file names on Android
+
+## 3.1.0 (Jul 25, 2019)
+
+- Support for `lottie-android` 3.0.0
+
+## 3.0.4 (Jul 23, 2019)
+
+- Fix for auto linking on Android
+
+## 3.0.3 (Jul 22, 2019)
+
+- Support for AndroidX
+- Removed deprecated rnpm support
+- Updated dependency for react-native-safe-module
+
+## 3.0.2 (Jul 13, 2019)
+
+- Lock lottie-ios on version 3.3.0
+
+## 3.0.1 (Jun 28, 2019)
+
+- Resolving UIViewManager deprecation warning
+
+## 3.0.0 (Jun 1, 2019)
+
+- React Native lottie upgrade (iOS)
+
+## 2.6.1 (March 29, 2019)
+
+- Lock lottie-ios on version 2.5.0
+- Enable RN projects to define the Android AppCompat Library version
+
+## 2.6.0 (March 18, 2019)
+
+- Add Android app compatability support for RN 0.59 on Android (#455)
+
 ## 2.5.11 (December 20, 2018)
 
 - Improved documentation

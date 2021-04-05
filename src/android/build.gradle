@@ -5,14 +5,15 @@ def safeExtGet(prop, fallback) {
 apply plugin: 'com.android.library'
 apply from: 'gradle-maven-push.gradle'
 
+//def DEFAULT_ANDROID_SUPPORT_LIB_VERSION = "1.0.0"
+
 android {
-  compileSdkVersion safeExtGet('compileSdkVersion', 26)
-  buildToolsVersion safeExtGet('buildToolsVersion', '26.0.3')
-  publishNonDefault true
+  compileSdkVersion safeExtGet('compileSdkVersion', 28)
+  buildToolsVersion safeExtGet('buildToolsVersion', '28.0.3')
 
   defaultConfig {
     minSdkVersion safeExtGet('minSdkVersion', 16)
-    targetSdkVersion safeExtGet('targetSdkVersion', 26)
+    targetSdkVersion safeExtGet('targetSdkVersion', 28)
   }
 
   lintOptions {
@@ -26,6 +27,9 @@ android {
 }
 
 dependencies {
-  compileOnly "com.facebook.react:react-native:+"
-  implementation 'com.airbnb.android:lottie:2.6.0'
+  //def supportLibVersion = safeExtGet('supportLibVersion', DEFAULT_ANDROID_SUPPORT_LIB_VERSION)
+
+  implementation "com.facebook.react:react-native:+"
+  implementation "androidx.appcompat:appcompat:1.0.0"
+  implementation 'com.airbnb.android:lottie:3.4.0'
 }
